@@ -32,11 +32,13 @@ class TodoScreen extends Component {
     const { todoLoading, todo } = this.props;
     return (
       <View style={GlobalStyles.container}>
-        {todoLoading ? (
-          <ActivityIndicator color={Colors.primaryColor} />
-        ) : (
-          <BaseList data={todo} itemComponent={this.renderTask} columns={2} />
-        )}
+        <BaseList
+          data={todo}
+          itemComponent={this.renderTask}
+          columns={2}
+          refreshHandler={this.fetchTodo}
+          loading={todoLoading}
+        />
       </View>
     );
   }

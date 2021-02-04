@@ -17,7 +17,7 @@ export const GlobalStyles = StyleSheet.create({
     marginBottom: 8,
     marginHorizontal: 6,
     borderRadius: 8,
-    backgroundColor: Colors.lightBackground
+    backgroundColor: Colors.lightColor
   },
   taskItem: {
     width: '47%',
@@ -28,7 +28,46 @@ export const GlobalStyles = StyleSheet.create({
     marginBottom: 8,
     marginHorizontal: 6,
     borderRadius: 4,
-    backgroundColor: Colors.lightBackground
+    backgroundColor: Colors.lightColor
+  },
+  userItem: {
+    width: '47%',
+    paddingVertical: 16,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+    margin: 6,
+    backgroundColor: Colors.lightColor
+  },
+  userAvatar: {
+    width: 80,
+    height: 80,
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
+    borderRadius: 40,
+    backgroundColor: Colors.primaryColor
+  },
+  userInfo: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginVertical: 6
+  },
+  userName: {
+    fontSize: 15,
+    fontWeight: 'bold'
+  },
+  userData: {
+    width: '88%',
+    marginLeft: 4
+  },
+  hyperlink: {
+    color: Colors.primaryColor
+  },
+  userLetter: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: Colors.lightColor
   },
   titleItem: {
     fontSize: 20,

@@ -56,7 +56,7 @@ const MainRoute = () => {
           name="Home"
           component={MainTabScreen}
           options={{
-            title: 'PlaceholderApp'
+            title: 'JSONPlaceholder'
           }}
         />
         <Stack.Screen name="Detail" component={DetailScreen} />

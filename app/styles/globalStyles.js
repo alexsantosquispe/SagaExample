@@ -16,7 +16,7 @@ export const GlobalStyles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 8,
     marginHorizontal: 6,
-    borderRadius: 8,
+    borderRadius: 5,
     backgroundColor: Colors.lightColor
   },
   taskItem: {
@@ -27,15 +27,18 @@ export const GlobalStyles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 8,
     marginHorizontal: 6,
-    borderRadius: 4,
+    borderRadius: 5,
     backgroundColor: Colors.lightColor
   },
   userItem: {
     width: '47%',
+    alignItems: 'center',
     paddingVertical: 16,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
+    marginTop: 4,
     borderRadius: 5,
-    margin: 6,
+    marginHorizontal: 6,
+    marginBottom: 8,
     backgroundColor: Colors.lightColor
   },
   userAvatar: {
@@ -84,5 +87,14 @@ export const GlobalStyles = StyleSheet.create({
   },
   iconLayout: {
     alignItems: 'flex-end'
+  },
+  centeredContainer: {
+    width: '60%',
+    alignItems: 'center'
+  },
+  emptyMessage: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: Colors.inactiveColor
   }
 });

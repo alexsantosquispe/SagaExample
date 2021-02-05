@@ -3,18 +3,25 @@ import * as Api from '../../services/api/placeholder';
 import * as ApiConst from '../../services/contants';
 import * as Actions from '../actions/todo.action';
 import * as TypesConts from '../actionTypes';
+import * as Utils from '../../utils/network';
 
 // Worker saga
 function* getTodos() {
   try {
     yield put(Actions.loadingTodo(true));
-    const response = yield call(Api.get, ApiConst.TODOS);
-    const { success, data, error } = response;
+    const networkStatus = yield call(Utils.isNetworkAvailable);
 
-    if (success) {
-      yield put(Actions.successTodo(data));
+    if (networkStatus) {
+      const response = yield call(Api.get, ApiConst.TODOS);
+      const { success, data, error } = response;
+
+      if (success) {
+        yield put(Actions.successTodo(data));
+      } else {
+        yield put(Actions.errorTodo(error));
+      }
     } else {
-      yield put(Actions.errorTodo(error));
+      yield put(Actions.errorTodo('Error Connection'));
     }
   } catch (err) {
     yield put(Actions.errorTodo(err));

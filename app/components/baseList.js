@@ -1,9 +1,18 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, Text } from 'react-native';
+import EmptyList from './emptyList';
 import { Colors, GlobalStyles } from '../styles';
 
 const BaseList = (props) => {
-  const { loading, data, itemComponent, columns = 1, refreshHandler } = props;
+  const {
+    loading,
+    data,
+    itemComponent,
+    columns = 1,
+    refreshHandler,
+    emptyMessage,
+    errorMessage
+  } = props;
 
   const keyExtractor = (item) => {
     return item.id.toString();
@@ -23,7 +32,7 @@ const BaseList = (props) => {
       keyExtractor={keyExtractor}
     />
   ) : (
-    <Text style={GlobalStyles.textItem}>The list is empty</Text>
+    <EmptyList message={emptyMessage} />
   );
 };
 

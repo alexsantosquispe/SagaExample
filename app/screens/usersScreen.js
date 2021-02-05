@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as Actions from '../redux/actions/users.action';
 import { BaseList, UserItem } from '../components';
 import { GlobalStyles } from '../styles';
+import { Messages } from '../constants/messages';
 
 class UsersScreen extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class UsersScreen extends Component {
           itemComponent={this.renderUserItem}
           loading={usersLoading}
           refreshHandler={this.fetchUsers}
+          emptyMessage={Messages.emptyUsers}
         />
       </View>
     );

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as Actions from '../redux/actions/posts.action';
 import { BaseList, PostItem } from '../components';
 import { GlobalStyles } from '../styles';
+import { Messages } from '../constants/messages';
 
 class PostsScreen extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class PostsScreen extends Component {
           itemComponent={this.renderPostItem}
           loading={postLoading}
           refreshHandler={this.fetchPosts}
+          emptyMessage={Messages.emptyListDefault}
         />
       </View>
     );

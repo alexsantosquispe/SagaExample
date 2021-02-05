@@ -3,18 +3,25 @@ import * as Api from '../../services/api/placeholder';
 import * as ApiConst from '../../services/contants';
 import * as Actions from '../actions/users.action';
 import * as TypesConst from '../actionTypes';
+import * as Utils from '../../utils/network';
 
 // Worker
 function* getUsers() {
   try {
     yield put(Actions.loadingUsers(true));
-    const response = yield call(Api.get, ApiConst.USERS);
-    const { success, data, error } = response;
+    const networkStatus = yield call(Utils.isNetworkAvailable);
 
-    if (success) {
-      yield put(Actions.successUsers(data));
+    if (networkStatus) {
+      const response = yield call(Api.get, ApiConst.USERS);
+      const { success, data, error } = response;
+
+      if (success) {
+        yield put(Actions.successUsers(data));
+      } else {
+        yield put(Actions.errorUsers(error));
+      }
     } else {
-      yield put(Actions.errorUsers(error));
+      yield put(Actions.errorUsers('Error Connection'));
     }
   } catch (err) {
     yield put(Actions.errorUsers(err));

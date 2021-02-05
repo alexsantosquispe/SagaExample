@@ -4,8 +4,8 @@ import { Colors, GlobalStyles } from '../styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const TaskItem = (props) => {
-  const { id, title, completed, userId } = props;
-  debugger;
+  const { title, completed } = props;
+
   return (
     <View style={GlobalStyles.taskItem}>
       <View style={GlobalStyles.iconLayout}>

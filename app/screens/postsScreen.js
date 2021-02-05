@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import * as Actions from '../redux/actions/posts.action';
 import { BaseList, PostItem } from '../components';
-import { Colors, GlobalStyles } from '../styles';
+import { GlobalStyles } from '../styles';
+import { Messages } from '../constants/messages';
 
 class PostsScreen extends Component {
   constructor(props) {
@@ -30,11 +31,13 @@ class PostsScreen extends Component {
     const { postLoading, posts } = this.props;
     return (
       <View style={GlobalStyles.container}>
-        {postLoading ? (
-          <ActivityIndicator color={Colors.primaryColor} />
-        ) : (
-          <BaseList data={posts} itemComponent={this.renderPostItem} />
-        )}
+        <BaseList
+          data={posts}
+          itemComponent={this.renderPostItem}
+          loading={postLoading}
+          refreshHandler={this.fetchPosts}
+          emptyMessage={Messages.emptyListDefault}
+        />
       </View>
     );
   }

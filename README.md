@@ -1,2 +1,8 @@
 # SagaExample
-This a little exmaple using redux saga to handle side effects
+This a little example using some libraries as:
+
+- Redux
+- Redux-Saga
+- Axios
+- React Navigation
+- React Native Vector Icons 

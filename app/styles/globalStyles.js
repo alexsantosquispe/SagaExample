@@ -13,9 +13,7 @@ export const GlobalStyles = StyleSheet.create({
   },
   postItem: {
     padding: 16,
-    marginTop: 4,
-    marginBottom: 8,
-    marginHorizontal: 6,
+    margin: 6,
     borderRadius: 5,
     backgroundColor: Colors.lightColor
   },
@@ -96,5 +94,12 @@ export const GlobalStyles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: Colors.inactiveColor
+  },
+  logoContainer: {
+    padding: 0
+  },
+  logo: {
+    height: 40,
+    width: '50%'
   }
 });

@@ -4,7 +4,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { PostsScreen, TodoScreen, UsersScreen, DetailScreen } from '../screens';
+import { Screens, Tabs } from './routes';
 import { Colors } from '../styles';
+import { LogoTitle } from '../components';
+import { capitalize } from '../utils';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -12,13 +15,13 @@ const Tab = createBottomTabNavigator();
 const MainTabScreen = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Posts"
+      initialRouteName={Tabs.initialTab}
       tabBarOptions={{
         activeTintColor: Colors.primaryColor,
         inactiveTintColor: Colors.inactiveColor
       }}>
       <Tab.Screen
-        name="Posts"
+        name={Tabs.posts}
         component={PostsScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -27,7 +30,7 @@ const MainTabScreen = () => {
         }}
       />
       <Tab.Screen
-        name="Todo"
+        name={Tabs.todo}
         component={TodoScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -36,7 +39,7 @@ const MainTabScreen = () => {
         }}
       />
       <Tab.Screen
-        name="Users"
+        name={Tabs.users}
         component={UsersScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -51,15 +54,24 @@ const MainTabScreen = () => {
 const MainRoute = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName={Screens.initialRoute}>
         <Stack.Screen
-          name="Home"
+          name={Screens.home}
           component={MainTabScreen}
           options={{
-            title: 'JSONPlaceholder'
+            headerStyle: {
+              elevation: 0
+            },
+            headerTitle: () => <LogoTitle />
           }}
         />
-        <Stack.Screen name="Detail" component={DetailScreen} />
+        <Stack.Screen
+          name={Screens.details}
+          component={DetailScreen}
+          options={({ route }) => ({
+            title: capitalize(route.params.title)
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

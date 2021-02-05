@@ -1,26 +1,25 @@
-import * as TypesConts from '../actionTypes';
+import * as TypesConst from '../actionTypes';
 
 const initialState = {
+  detail: null,
   loading: false,
-  posts: [],
   error: null
 };
 
-const postReducer = (state = initialState, action) => {
+export default postDetailReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TypesConts.LOADING_POSTS:
+    case TypesConst.LOADING_POST:
       return {
         ...state,
         loading: action.payload
       };
-    case TypesConts.SUCCESS_POSTS:
+    case TypesConst.SUCCESS_POST:
       return {
         ...state,
-        posts: action.payload,
+        detail: action.payload,
         loading: false
       };
-    case TypesConts.ERROR_POSTS:
-      debugger;
+    case TypesConst.ERROR_POST:
       return {
         ...state,
         error: action.payload,
@@ -30,5 +29,3 @@ const postReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default postReducer;

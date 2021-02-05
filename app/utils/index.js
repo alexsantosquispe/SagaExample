@@ -13,4 +13,12 @@ const getFirstLetter = (str) => {
   return str;
 };
 
-export { getFirstLetter, getRandomColor };
+const capitalize = (str) => {
+  if (str && typeof str === 'string') {
+    const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
+    return capitalized;
+  }
+  return str;
+};
+
+export { getFirstLetter, getRandomColor, capitalize };

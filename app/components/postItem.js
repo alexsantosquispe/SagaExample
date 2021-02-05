@@ -1,16 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../styles';
+import { capitalize } from '../utils';
 
 const PostItem = (props) => {
-  const { title, body } = props;
+  const { title, body, onPressHandler } = props;
   return (
-    <View style={GlobalStyles.postItem}>
-      <View style={GlobalStyles.titleLayout}>
-        <Text style={GlobalStyles.titleItem}>{title}</Text>
+    <TouchableOpacity onPress={onPressHandler}>
+      <View style={GlobalStyles.postItem}>
+        <View style={GlobalStyles.titleLayout}>
+          <Text style={GlobalStyles.titleItem}>{capitalize(title)}</Text>
+        </View>
+        <Text style={GlobalStyles.textItem}>{body}</Text>
       </View>
-      <Text style={GlobalStyles.textItem}>{body}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

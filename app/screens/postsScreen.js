@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import NavigationBar from 'react-native-navbar-color';
 import { connect } from 'react-redux';
 
 import * as Actions from '../redux/actions/posts.action';
 import { BaseList, PostItem } from '../components';
-import { GlobalStyles } from '../styles';
+import { Colors, GlobalStyles } from '../styles';
 import { Messages } from '../constants/messages';
+import { Screens } from '../navigation/routes';
 
 class PostsScreen extends Component {
   constructor(props) {
     super(props);
     this.fetchPosts = this.fetchPosts.bind(this);
+    this.openDetailScreen = this.openDetailScreen.bind(this);
   }
 
   componentDidMount() {
+    this.setNavBarColor();
     this.fetchPosts();
+  }
+
+  setNavBarColor() {
+    NavigationBar.setColor(Colors.lightColor);
+    NavigationBar.setStatusBarColor(Colors.lightColor);
+    NavigationBar.setStatusBarTheme('dark', true);
   }
 
   fetchPosts() {
@@ -22,13 +32,24 @@ class PostsScreen extends Component {
     populatePosts();
   }
 
+  openDetailScreen(itemId, title) {
+    let { navigation } = this.props;
+    navigation.navigate(Screens.details, { itemId, title });
+  }
+
   renderPostItem = ({ item }) => {
-    const { title, body } = item;
-    return <PostItem title={title} body={body} />;
+    const { id, title, body } = item;
+    return (
+      <PostItem
+        title={title}
+        body={body}
+        onPressHandler={() => this.openDetailScreen(id, title)}
+      />
+    );
   };
 
   render() {
-    const { postLoading, posts } = this.props;
+    const { postLoading, posts, postError } = this.props;
     return (
       <View style={GlobalStyles.container}>
         <BaseList
@@ -37,6 +58,7 @@ class PostsScreen extends Component {
           loading={postLoading}
           refreshHandler={this.fetchPosts}
           emptyMessage={Messages.emptyListDefault}
+          errorMessage={postError}
         />
       </View>
     );

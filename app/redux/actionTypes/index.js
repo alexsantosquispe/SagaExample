@@ -13,5 +13,7 @@ export const LOADING_USERS = 'LOADING_USERS';
 export const SUCCESS_USERS = 'SUCCESS_USERS';
 export const ERROR_USERS = 'ERROR_USERS';
 
-// export const GET_POST = 'GET_POST';
-// export const FECTH_COMMENTS = 'FECTH_COMMENTS';
+export const FETCH_POST = 'FETCH_POST';
+export const LOADING_POST = 'LOADING_POST';
+export const SUCCESS_POST = 'SUCCESS_POST';
+export const ERROR_POST = 'ERROR_POST';
